@@ -3,13 +3,13 @@
 	<MinDurability>0.3</MinDurability>
 	<MinFreeBagSlots>2</MinFreeBagSlots>
 	<SellGrey>True</SellGrey>
-	<SellWhite>True</SellWhite>
+	<SellWhite>False</SellWhite>
 	<SellGreen>False</SellGreen>
 	<MailWhite>False</MailWhite>
 	<MailGreen>True</MailGreen>
 	<MailBlue>True</MailBlue>
 	<MinLevel>1</MinLevel>
-	<MaxLevel>86</MaxLevel>
+	<MaxLevel>90</MaxLevel>
 	<QuestOrder>
 		<CustomBehavior File="UserSettings" LootMobs="True" PullDistance="35" KillBetweenHotspots="True"/>
 		<CustomBehavior File="Message" Text="HB: *****************************" LogColor="GreenYellow"/>
@@ -45,4 +45,5 @@
 			<GrindTo Condition="(InbagCount(62778) >= 30)" GoalText="Farming Toughened Flesh, oh yeah..."/>
 		</If>
 	</QuestOrder>
+
 </HBProfile>
