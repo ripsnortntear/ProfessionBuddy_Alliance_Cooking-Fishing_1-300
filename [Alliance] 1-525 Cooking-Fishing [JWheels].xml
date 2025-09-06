@@ -225,6 +225,7 @@
         <Wait Condition="false" Timeout="2000"/>
     </SubRoutine>
     <SubRoutine SubRoutineName="Sell">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] Sell - Managing inventory and selling items&quot;);"/>
         <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;Time to clean the bags!&quot;); "/>
         <If Condition="Cooking.Level &gt;= 175" IgnoreCanRun="True">
             <SellItem Sell="All" NpcEntry="0" Location="0, 0, 0" SellItemType="Greys" ItemID="" Count="0"/>
@@ -503,6 +504,7 @@
         </While>
     </SubRoutine>
     <SubRoutine SubRoutineName="LearnRecipe">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] LearnRecipe - Learning required cooking recipes&quot;);"/>
         <While Condition="!HasRecipe(37836) &amp;&amp; Cooking.Level &gt;= 1 &amp;&amp; Cooking.Level &lt; 40" IgnoreCanRun="True">
             <CallSubRoutine SubRoutineName="TrainCooking"/>
         </While>
@@ -777,25 +779,32 @@
         </If>
     </SubRoutine>
     <!--Whiles for cooking-->
+    <Custom Code="Log(System.Drawing.Color.Magenta,&quot;[Main Loop] Starting Classic + BC cooking phase (levels 1-350)&quot;);"/>
     <While Condition="(InbagCount (30817) + InbagCount (2678) + InbagCount (30816)*2) &gt;= 150 &amp;&amp; Cooking.Level &gt;= 1 &amp;&amp; Cooking.Level &lt; 40 || InbagCount (6291) + InbagCount (7751) &gt;= 40 &amp;&amp; Cooking.Level &gt;= 40 &amp;&amp; Cooking.Level &lt; 65 || (InbagCount (4592) + InbagCount (6289)) &gt;= 60 &amp;&amp; Cooking.Level &gt;= 65 &amp;&amp; Cooking.Level &lt; 110 || (InbagCount (6308) + InbagCount (4593)) &gt;= 120 &amp;&amp; Cooking.Level &gt;= 110 &amp;&amp; Cooking.Level &lt; 175 || (InbagCount (8364) + InbagCount (8365)) &gt;= 90 &amp;&amp; (InbagCount (13759) + InbagCount (13760) + InbagCount(13932) + InbagCount(13931)) &gt;= 40 &amp;&amp; Cooking.Level &gt;= 175 &amp;&amp; Cooking.Level &lt; 275 || (InbagCount (13935) + InbagCount (13889)) &gt;= 100 &amp;&amp; Cooking.Level &gt;= 275 &amp;&amp; Cooking.Level &lt; 325 || (InbagCount (27666) + InbagCount (27438)) &gt;= 15 &amp;&amp; (InbagCount (33048) + InbagCount (27422)) &gt;= 50 &amp;&amp; Cooking.Level &gt;= 325 &amp;&amp; Cooking.Level &lt; 350" IgnoreCanRun="True">
         <!--Classic + BC Part-->
+        <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Loop] Processing Classic + BC cooking recipes&quot;);"/>
         <CallSubRoutine SubRoutineName="LearnRecipe"/>
         <CallSubRoutine SubRoutineName="CreateFood"/>
         <CallSubRoutine SubRoutineName="WhatToCook"/>
     </While>
+    <Custom Code="Log(System.Drawing.Color.Magenta,&quot;[Main Loop] Starting Northrend cooking phase (levels 350-435)&quot;);"/>
     <While Condition="InbagCount(41805) + InbagCount(45932) &gt;= 60 &amp;&amp; InbagCount(41803) + InbagCount (34759) &gt;= 100 &amp;&amp; InbagCount (43268)*2 + InbagCount (36781) + InbagCount (36782) &gt;= 30 &amp;&amp; InbagCount (42942) + InbagCount (41802) &gt;= 60 &amp;&amp; Cooking.Level &gt;= 350 &amp;&amp; Cooking.Level &lt; 415 || InbagCount (62790)*3 + InbagCount (2596)*2 + InbagCount (2595) &gt;= 150 &amp;&amp; Cooking.Level &gt;= 415 &amp;&amp; Cooking.Level &lt; 435" IgnoreCanRun="True">
         <!--Northern Part-->
+        <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Loop] Processing Northrend cooking recipes&quot;);"/>
         <CallSubRoutine SubRoutineName="LearnRecipe"/>
         <CallSubRoutine SubRoutineName="CreateFood"/>
         <CallSubRoutine SubRoutineName="WhatToCook"/>
     </While>
+    <Custom Code="Log(System.Drawing.Color.Magenta,&quot;[Main Loop] Starting Cataclysm cooking phase (levels 435-450)&quot;);"/>
     <While Condition="(InbagCount (62778) + InbagCount (62676)) &gt;= 15 &amp;&amp; Cooking.Level &gt;= 435 &amp;&amp; Cooking.Level &lt; 450" IgnoreCanRun="True">
         <!--Cataclysm Part-->
+        <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Loop] Processing Cataclysm cooking recipes&quot;);"/>
         <CallSubRoutine SubRoutineName="LearnRecipe"/>
         <CallSubRoutine SubRoutineName="CreateFood"/>
         <CallSubRoutine SubRoutineName="WhatToCook"/>
     </While>
     <!--If's for fishing-->
+    <Custom Code="Log(System.Drawing.Color.Magenta,&quot;[Main Logic] Checking if fishing is needed for materials&quot;);"/>
     <If Condition="(InbagCount (30817) + InbagCount (2678) + InbagCount (30816)*2) &lt; 150 &amp;&amp; Cooking.Level &gt;= 1 &amp;&amp; Cooking.Level &lt; 40" IgnoreCanRun="False">
         <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;We need supplies!! Going to buy some.&quot;); "/>
         <If Condition="Me.IsAlliance" IgnoreCanRun="True">
