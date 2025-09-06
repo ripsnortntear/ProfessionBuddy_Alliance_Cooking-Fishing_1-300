@@ -8,7 +8,7 @@
         <Wait Condition="false" Timeout="35000"/>
     </If>
     <!--Intro-->
-    <Custom Code="Log(System.Drawing.Color.DarkOliveGreen,&quot;[Aliance] 1-525 Cooking-Fishing [JWheels]&quot;);"/>
+    <Custom Code="Log(System.Drawing.Color.DarkOliveGreen,&quot;[Alliance] 1-525 Cooking-Fishing [JWheels]&quot;);"/>
     <Custom Code="Lua.DoString(&quot;SetCVar(\&quot;AutoLootDefault\&quot;, 1)&quot;);"/>
     <!--Setup custom loot handler for fishing-->
     <If Condition="System.AppDomain.CurrentDomain.GetData(&quot;PB Fish LootHandler&quot;)  == null" IgnoreCanRun="True">
@@ -1069,3 +1069,4 @@
 									return WoWMathHelper.IsFacing(Me.Location, Me.RenderFacing, facePoint,0.5f);
 								}"/>
 </PBProfile>
+
