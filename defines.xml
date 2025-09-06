@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PBProfile>
+
+
+  // This action will attach a SubRoutine to a Treehook. The Subroutine is automatically detached from the TreeHook when bot is stopped or a new Professionbuddy profile is loaded. 
+  // Calling this action more than once has no effect, the TreeHook is only attached the first time it is executed. 
+  // The TreeHook will be attached to on profile startup if the 'Attach on Start' property value is set to 'true'
   <AttachToTreeHook SubRoutineName="" TreeHookName="" AttachOnStart="False" />
+
+  
   <BuyItemFromAH ItemListType="Item" ItemID="" MaxBuyout="100g0s0c" Amount="1" BuyAdditively="True" AutoFindAh="True" BidOnItem="False" Location="0,0,0" />
   <BuyItem NpcEntry="0" Location="0,0,0" ItemID="" BuyItemType="Material" Count="1" BuyAdditively="True" />
+
+  // This action will execute a SubRoutine
   <CallSubRoutine SubRoutineName="" />
+
+  // This action will cancel auctions that matches item entries or all auctions that belong to a category and optionally sub category if they have been undercut.
+  // 'Item Entries' takes a comma separated list of item entries. Set 'Use Category' to false and leave 'Item Entries' blank to cancel all undercut auctions.
+  // If the competition is at or below 'Min Buyout' than that auction is skipped.
   <CancelAuction UseCategory="False" Category="TradeGoods" SubCategory="None" SubCategoryType="WoWItemTradeGoodsClass" ItemID="0" AutoFindAh="True" MinBuyout="0g0s0c" Location="0,0,0" IgnoreStackSizeBelow="1" />
+
+  
   <CastSpell RepeatType="Craftable" Repeat="1" Entry="0" CastOnItem="False" ItemType="Chest" ItemId="0" />
   <ChangeBot BotName="" />
   <Custom Code="" /> 
