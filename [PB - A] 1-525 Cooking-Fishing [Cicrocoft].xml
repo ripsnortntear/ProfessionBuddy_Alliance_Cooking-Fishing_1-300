@@ -229,19 +229,19 @@
 		<customaction code="Log(System.Drawing.Color.YellowGreen,&quot;Time to clean the bags!&quot;); "/>
 		<if condition="Cooking.Level &gt;= 175" ignorecanrun="True">
 			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Greys" itemid="" count="0"/>
-			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290" count="0"/>
+			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,43646" count="0"/>
 		</if>
 		<if condition="Cooking.Level &gt;= 275" ignorecanrun="True">
-			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758" count="0"/>
+			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758,43646" count="0"/>
 		</if>
 		<if condition="Cooking.Level &gt;= 300" ignorecanrun="True">
-			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758,13935,13889" count="0"/>
+			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758,13935,13889,43646" count="0"/>
 		</if>
 		<if condition="Cooking.Level &gt;= 325" ignorecanrun="True">
-			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="27674,27655,30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758,13935,13889" count="0"/>
+			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="27674,27655,30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758,13935,13889,43646" count="0"/>
 		</if>
 		<if condition="Cooking.Level &gt;= 350" ignorecanrun="True">
-			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="27666,27438,27674,27655,30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758,13935,13889" count="0"/>
+			<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="27666,27438,27674,27655,30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,8364,8365,13760,13932,13759,13931,13758,13935,13889,43646" count="0"/>
 		</if>
 		<if condition="Cooking.Level &gt;= 435" ignorecanrun="True">
 			<while condition="InbagCount(36781) &gt;= 1" ignorecanrun="False">
@@ -351,7 +351,7 @@
 					</while>
 					<waitaction condition="false" timeout="1000"/>
 					<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Greys" itemid="" count="0"/>
-					<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290" count="0"/>
+					<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,43646" count="0"/>
 					<waitaction condition="false" timeout="1000"/>
 				</if>
 				<if condition="!HasRecipe(20916) &amp;&amp; InbagCount (17062) == 0" ignorecanrun="True">
@@ -543,7 +543,7 @@
 				<buyitemaction npcentry="3178" location="-3731.31, -648.925, 2.449463" itemid="17062" buyitemtype="SpecificItem" count="1" buyadditively="False"/>
 				<customaction code="Log(System.Drawing.Color.YellowGreen,&quot;Might aswell clean the bags. Selling greys and fish&quot;); "/>
 				<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Greys" itemid="" count="0"/>
-				<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290" count="0"/>
+				<sellitemaction sell="All" npcentry="0" location="0, 0, 0" sellitemtype="Specific" itemid="30817,2678,30816,6291,7751,4592,6289,6308,4593,6290,43646" count="0"/>
 				<waitaction condition="false" timeout="2000"/>
 			</if>
 			<customaction code="Log(System.Drawing.Color.YellowGreen,&quot;Learning my new recipe.&quot;); "/>
