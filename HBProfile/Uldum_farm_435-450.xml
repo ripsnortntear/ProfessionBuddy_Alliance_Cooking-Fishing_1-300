@@ -12,15 +12,20 @@
 	<MaxLevel>90</MaxLevel>
 	<QuestOrder>
 		<CustomBehavior File="UserSettings" LootMobs="True" PullDistance="35" KillBetweenHotspots="True"/>
+		<CustomBehavior File="Message" Text="HB: [Step] Starting Uldum Meat Farming Profile" LogColor="Cyan"/>
 		<CustomBehavior File="Message" Text="HB: *****************************" LogColor="GreenYellow"/>
 		<CustomBehavior File="Message" Text="HB: [Neutral] Uldum Meat Farm" LogColor="GreenYellow"/>
 		<CustomBehavior File="Message" Text="HB: Thanks to:" LogColor="GreenYellow"/>
 		<CustomBehavior File="Message" Text="HB: *****************************" LogColor="GreenYellow"/>
 		<If Condition="(Me.MapId == 1) &amp;&amp; (Me.GetSkill(Styx.SkillLine.Cooking).CurrentValue &lt; 450)">
+			<CustomBehavior File="Message" Text="HB: [Step] Checking cooking skill and location for Uldum farming" LogColor="Orange"/>
 			<CustomBehavior File="Message" Text="HB: Uldum Meat Farming 435-450" LogColor="Orange"/>
+			<CustomBehavior File="Message" Text="HB: [Action] Flying to Uldum farming location" LogColor="Cyan"/>
 			<CustomBehavior File="FlyTo" x="-9108.947" y="-1416.189" z="95.60325"/>
+			<CustomBehavior File="Message" Text="HB: [Action] Dismounting and preparing to farm" LogColor="Cyan"/>
 			<CustomBehavior File="ForcedDismount"/>
 			<SetGrindArea>
+				<CustomBehavior File="Message" Text="HB: [Action] Setting up grinding area for Uldum farming" LogColor="Cyan"/>
 				<GrindArea>
 					<Name>Uldum Meat Farming 435-450</Name>
 					<TargetMinLevel>82</TargetMinLevel>
@@ -42,6 +47,7 @@
 					</Hotspots>
 				</GrindArea>
 			</SetGrindArea>
+			<CustomBehavior File="Message" Text="HB: [Action] Starting to grind for Toughened Flesh (need 30)" LogColor="Cyan"/>
 			<GrindTo Condition="(InbagCount(62778) >= 30)" GoalText="Farming Toughened Flesh, oh yeah..."/>
 		</If>
 	</QuestOrder>

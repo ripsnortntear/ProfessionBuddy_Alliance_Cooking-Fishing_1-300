@@ -28,15 +28,19 @@
         </If>
         <CallSubRoutine SubRoutineName="TrainFishing"/>
     </While>
+    <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Step] Equipping fishing pole&quot;);"/>
     <CallSubRoutine SubRoutineName="EquipFishingPole"/>
     <While Condition="Cooking.MaxLevel &lt; 1" IgnoreCanRun="True">
         <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;I don't know cooking. Going to learn it&quot;); "/>
         <CallSubRoutine SubRoutineName="TrainCooking"/>
     </While>
+    <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Step] Buying required recipes&quot;);"/>
     <CallSubRoutine SubRoutineName="BuyRecipe"/>
+    <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Step] Learning purchased recipes&quot;);"/>
     <CallSubRoutine SubRoutineName="LearnRecipe"/>
     <!--Subs-->
     <SubRoutine SubRoutineName="TrainFishing">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] TrainFishing - Starting fishing skill training&quot;);"/>
         <If Condition="Me.IsAlliance" IgnoreCanRun="True">
             <If Condition="Me.ZoneId == 12 || Me.ZoneId == 1519 || Me.ZoneId == 44 || Me.ZoneId == 4" IgnoreCanRun="True">
                 <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;I need to train fishing. Going to train in near Goldshire.&quot;); "/>
@@ -44,6 +48,7 @@
                     <If Condition="DistanceTo (-9382.077, -117.0054, 58.77687) &gt; 30" IgnoreCanRun="True">
                         <FlyTo Dismount="False" Location="-9382.722, -119.8093, 56.22465"/>
                     </If>
+                    <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Action] Training fishing skill with NPC 1651&quot;);"/>
                     <TrainSkill NpcEntry="1651" Location="-9382.077, -117.0054, 58.77702"/>
                 </While>
                 <Wait Condition="false" Timeout="2000"/>
@@ -88,6 +93,7 @@
         </If>
     </SubRoutine>
     <SubRoutine SubRoutineName="TrainCooking">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] TrainCooking - Starting cooking skill training&quot;);"/>
         <If Condition="Me.IsAlliance" IgnoreCanRun="True">
             <If Condition="Me.ZoneId == 44 || Me.ZoneId == 12 || Me.ZoneId == 1519" IgnoreCanRun="True">
                 <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;I need to train cooking. Going to train in Lake Everstill town.&quot;); "/>
@@ -103,6 +109,7 @@
                 <If Condition="DistanceTo (-5594.47, -545.82, 398.7681) &gt; 30" IgnoreCanRun="True">
                     <FlyTo Dismount="True" Location="-5600.912, -485.818, 397.1074"/>
                 </If>
+                <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Action] Training cooking skill with NPC 1699 in Kharanos&quot;);"/>
                 <TrainSkill NpcEntry="1699" Location="-5594.47, -545.82, 398.7681"/>
                 <Wait Condition="false" Timeout="2000"/>
             </If>
@@ -138,6 +145,7 @@
         </If>
     </SubRoutine>
     <SubRoutine SubRoutineName="CreateFood">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] CreateFood - Finding location to cook food&quot;);"/>
         <If Condition="Me.IsAlliance" IgnoreCanRun="True">
             <If Condition="Me.ZoneId == 4395" IgnoreCanRun="True">
                 <If Condition="DistanceTo (5700.841, 717.2857, 642.4707) &gt; 3" IgnoreCanRun="True">
@@ -194,6 +202,7 @@
         </If>
     </SubRoutine>
     <SubRoutine SubRoutineName="EquipFishingPole">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] EquipFishingPole - Equipping or buying fishing pole&quot;);"/>
         <If Condition="Me.Inventory.Equipped.MainHand == null || Me.Inventory.Equipped.MainHand.ItemInfo.WeaponClass != WoWItemWeaponClass.FishingPole" IgnoreCanRun="True">
             <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;Lets equip fishing pole&quot;); "/>
             <Custom Code="var1 = Me.BagItems.FirstOrDefault(i => i.ItemInfo.WeaponClass == WoWItemWeaponClass.FishingPole);"/>
@@ -204,7 +213,9 @@
             <!--No fishing pole in bags, lets go buy one.-->
             <If Condition="var1 == null" IgnoreCanRun="True">
                 <If Condition="Me.IsAlliance" IgnoreCanRun="True">
+                    <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Action] Flying to buy fishing pole in Stormwind&quot;);"/>
                     <FlyTo Dismount="True" Location="-8800.812, 767.9769, 96.33873"/>
+                    <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Action] Purchasing fishing pole from NPC&quot;);"/>
                     <BuyItem NpcEntry="5494" Location="-8800.812, 767.9769, 96.33873" ItemID="6256" BuyItemType="SpecificItem" Count="1" BuyAdditively="True"/>
                     <Wait Condition="false" Timeout="3000"/>
                 </If>
@@ -262,14 +273,17 @@
         </If>
     </SubRoutine>
     <SubRoutine SubRoutineName="DoFishing">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] DoFishing - Starting fishing operations&quot;);"/>
         <While Condition="Fishing.Level &gt;= Fishing.MaxLevel - 25 &amp;&amp; Fishing.Level &lt; 500 &amp;&amp; Fishing.Level != 525" IgnoreCanRun="True">
             <CallSubRoutine SubRoutineName="TrainFishing"/>
         </While>
         <!--Use Coins If we have them and don't have 'Lucky' buff-->
         <Custom Code="var3 =  Me.BagItems.FirstOrDefault(i =&gt; ((List&lt;uint&gt;)var2).Contains(i.Entry));"/>
         <If Condition="var3 != null &amp;&amp; !Me.HasAura(&quot;Lucky&quot;)" IgnoreCanRun="True">
+            <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Action] Using Lucky coin for fishing buff&quot;);"/>
             <Custom Code="((WoWItem)var3).UseContainerItem();"/>
         </If>
+        <Custom Code="Log(System.Drawing.Color.Cyan,&quot;[Action] Starting to fish&quot;);"/>
         <Custom Code="Fish();"/>
     </SubRoutine>
     <SubRoutine SubRoutineName="UF">
@@ -279,6 +293,7 @@
         <Wait Condition="false" Timeout="1000"/>
     </SubRoutine>
     <SubRoutine SubRoutineName="BuyRecipe">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] BuyRecipe - Purchasing required cooking recipes&quot;);"/>
         <If Condition="Me.IsAlliance" IgnoreCanRun="True">
             <If Condition="Cooking.Level &gt;= 1 &amp;&amp; Cooking.Level &lt; 175" IgnoreCanRun="True">
                 <If Condition="InbagCount (6328) == 0" IgnoreCanRun="True">
@@ -386,6 +401,7 @@
         <CallSubRoutine SubRoutineName="LearnRecipe"/>
     </SubRoutine>
     <SubRoutine SubRoutineName="WhatToCook">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] WhatToCook - Determining what to cook based on current skill level&quot;);"/>
         <While Condition="InbagCount (30817) &gt;= 1 &amp;&amp; InbagCount (2678) &gt;= 1 &amp;&amp; Cooking.Level &lt; 40 &amp;&amp; HasRecipe(37836)" IgnoreCanRun="False">
             <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;Making Spice Bread&quot;); "/>
             <CallSubRoutine SubRoutineName="CheckCookingSkill"/>
@@ -728,6 +744,7 @@
         </If>
     </SubRoutine>
     <SubRoutine SubRoutineName="Kalimdor to EK">
+        <Custom Code="Log(System.Drawing.Color.Orange,&quot;[Subroutine] Kalimdor to EK - Traveling from Kalimdor to Eastern Kingdoms&quot;);"/>
         <If Condition="Me.IsAlliance" IgnoreCanRun="True">
             <If Condition="Me.MapId == 1" IgnoreCanRun="True">
                 <Custom Code="Log(System.Drawing.Color.YellowGreen,&quot;Going home to Eastern Kingdom!&quot;); "/>
