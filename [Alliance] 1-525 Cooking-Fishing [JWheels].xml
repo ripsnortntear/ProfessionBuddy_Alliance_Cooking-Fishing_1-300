@@ -2,7 +2,7 @@
 <PBProfile>
 	
 	<If Condition="Me.IsHorde" IgnoreCanRun="True">
-		<Custom Code="Log(System.Drawing.Color.DarkOliveGreen,&quot;This is an Alliance only supported profile. AtticusG3 fucked the whole profile up and ran away. But then JWheels showed up and fucked it up again!&quot;);"/>
+		<Custom Code="Log(System.Drawing.Color.DarkOliveGreen,&quot;This is an Alliance only supported profile by Cicrocoft. AtticusG3 fucked the whole profile up and ran away. But then JWheels showed up and fucked it up again!&quot;);"/>
 		<Custom Code="Log(&quot;Starting log out in 60sec&quot;);"/>
 		<Wait Condition="false" Timeout="60000"/>
 		<Custom Code=" Lua.DoString(&quot;Logout()&quot;);TreeRoot.Stop();"/>
@@ -11,7 +11,7 @@
 	
 	<!--Intro-->
 	
-	<Custom Code="Log(System.Drawing.Color.DarkOliveGreen,&quot;[PB - A] 1-525 Cooking-Fishing [Cicrocoft]&quot;);"/>
+	<Custom Code="Log(System.Drawing.Color.DarkOliveGreen,&quot;[Aliance] 1-525 Cooking-Fishing [JWheels]&quot;);"/>
 	<Custom Code="Lua.DoString(&quot;SetCVar(\&quot;AutoLootDefault\&quot;, 1)&quot;);"/>
 	
 	<!--Setup custom loot handler for fishing-->
@@ -854,7 +854,7 @@
 				<CallSubRoutine SubRoutineName="DoFishing"/>
 			</While>
 		</If>
-		<If Condition="(InbagCount(8364) + InbagCount(8365)) &gt;= 110 &amp;&amp; (InbagCount (13759) + InbagCount (13760) + InbagCount(13932) + InbagCount(13931)) &lt; 40 &amp;&amp; cooking.Level &gt;= 175 &amp;&amp; Cooking.Level &lt; 275" IgnoreCanRun="False">
+		<If Condition="(InbagCount(8364) + InbagCount(8365)) &gt;= 110 &amp;&amp; (InbagCount (13759) + InbagCount (13760) + InbagCount(13932) + InbagCount(13931)) &lt; 40 &amp;&amp; Cooking.Level &gt;= 175 &amp;&amp; Cooking.Level &lt; 275" IgnoreCanRun="False">
 			<CallSubRoutine SubRoutineName="BuyRecipe"/>
 			<While Condition="Me.IsAlliance" IgnoreCanRun="True">
 				<If Condition="InbagCount(159) &lt; 40" IgnoreCanRun="True">
